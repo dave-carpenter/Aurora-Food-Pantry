@@ -3,6 +3,8 @@ package main;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -69,7 +71,8 @@ public class afp_ui extends javax.swing.JFrame {
         jTextField10 = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        contactInformationButton = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jTextField12 = new javax.swing.JTextField();
@@ -339,10 +342,17 @@ public class afp_ui extends javax.swing.JFrame {
 
         jButton3.setText("Go");
 
-        jButton10.setText("Show Contact Information");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        contactInformationButton.setText("Show Contact Information");
+        contactInformationButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                contactInformationButtonActionPerformed(evt);
+            }
+        });
+
+        deleteButton.setText("Delete Selected");
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
             }
         });
 
@@ -361,7 +371,10 @@ public class afp_ui extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton10)))
+                        .addComponent(contactInformationButton))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(deleteButton)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -372,9 +385,11 @@ public class afp_ui extends javax.swing.JFrame {
                     .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
                     .addComponent(jButton3)
-                    .addComponent(jButton10))
+                    .addComponent(contactInformationButton))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 368, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(deleteButton)
                 .addContainerGap())
         );
 
@@ -966,7 +981,7 @@ public class afp_ui extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+    private void contactInformationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactInformationButtonActionPerformed
     
         
         int row = jTable1.getSelectedRow();
@@ -995,15 +1010,16 @@ public class afp_ui extends javax.swing.JFrame {
 
         
         
-    }//GEN-LAST:event_jButton10ActionPerformed
+    }//GEN-LAST:event_contactInformationButtonActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         loadTable();
     }//GEN-LAST:event_formWindowOpened
 
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
-        String firstName =          fnameField.getText();
-        String lastName =          lnameField.getText();
+        
+        String firstName =      fnameField.getText();
+        String lastName =       lnameField.getText();
         String streetNumber =   streetNumberField.getText();
         String streetName =     streetNameField.getText();
         String city =           cityField.getText();
@@ -1031,6 +1047,10 @@ public class afp_ui extends javax.swing.JFrame {
                 lastName,
                 courtMandated));
         
+        
+        //System.out.println(doQuery("SELECT LAST_INSERT_ID();"));
+        
+        //doUpdate("INSERT INTO contact_info SET contact_info_ibfk_1 = LAST_INSERT_ID();");
         doUpdate(String.format(
                 "INSERT INTO `contact_info` ("
                 + " `street_number`,"
@@ -1063,6 +1083,19 @@ public class afp_ui extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_submitButtonActionPerformed
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+
+        int row = jTable1.getSelectedRow();
+        int id = (int)jTable1.getValueAt(row, 0);
+
+        
+        JOptionPane.showMessageDialog(this,
+                String.format("Are you sure you wish to delete user: %s %s?", volunteers.get(id).getFirst_name(), volunteers.get(id).getLast_name() ), 
+        "Delete User",
+        JOptionPane.WARNING_MESSAGE);
+
+    }//GEN-LAST:event_deleteButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1103,7 +1136,7 @@ public class afp_ui extends javax.swing.JFrame {
        
     }
     
-    public HashMap<Integer,volunteer> volunteers = getDBData();
+    public HashMap<Integer,volunteer> volunteers;
     
     public void doUpdate(String SQL) {
         
@@ -1122,10 +1155,18 @@ public class afp_ui extends javax.swing.JFrame {
         }
         
         
-        
     }
     
     public void loadTable() {
+        
+        //empty jtable
+        model.setRowCount(0);
+
+        //update hashmap from database
+        volunteers = getDBData();
+
+        //populate table from hashmap
+        /*
         for (int i = 1; i <= volunteers.size(); i++) {
             model.addRow(new Object[]{
                 volunteers.get(i).getId(),
@@ -1135,6 +1176,25 @@ public class afp_ui extends javax.swing.JFrame {
                 volunteers.get(i).getCourt_mandated()
             });
         }
+        */
+        
+        Iterator it = volunteers.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry)it.next();
+            //System.out.println(pair.getKey() + " = " + pair.getValue());
+            //System.out.println(volunteers.get(pair.getKey()).getFirst_name() );
+            model.addRow(new Object[]{
+                volunteers.get(pair.getKey()).getId(),
+                volunteers.get(pair.getKey()).getFirst_name(),
+                volunteers.get(pair.getKey()).getLast_name(),
+                volunteers.get(pair.getKey()).getCity(),
+                volunteers.get(pair.getKey()).getCourt_mandated()
+            });
+            //it.remove();
+        }
+        
+        System.out.println("Table loaded");
+        
     }
     
         
@@ -1154,10 +1214,12 @@ public class afp_ui extends javax.swing.JFrame {
         try {
 
             ResultSet resultset = DB.doQuery(SQL);
+            
 
             while (resultset.next()) {
 
-                employees.put(Integer.parseInt(resultset.getString(1)), new volunteer(
+                employees.put(Integer.parseInt(resultset.getString(1)), 
+                        new volunteer(
                         Integer.parseInt(resultset.getString(1)),
                         resultset.getString(2),
                         resultset.getString(3),
@@ -1172,8 +1234,11 @@ public class afp_ui extends javax.swing.JFrame {
                         resultset.getString(13))
                     );
                
-
+        
+            
+            
             }
+            
 
         } catch (SQLException e) {
             System.out.printf("\nSQL Failed: %s", SQL);
@@ -1183,6 +1248,8 @@ public class afp_ui extends javax.swing.JFrame {
         
         System.out.printf("Successfully loaded %d records\n", employees.size());
         
+
+        
         return employees;
     }
 
@@ -1190,11 +1257,12 @@ public class afp_ui extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField cellPhoneField;
     private javax.swing.JTextField cityField;
+    private javax.swing.JButton contactInformationButton;
     private javax.swing.JCheckBox courtMandatedBox;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JTextField emailAddressField;
     private javax.swing.JTextField fnameField;
     private javax.swing.JTextField homePhoneField;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
