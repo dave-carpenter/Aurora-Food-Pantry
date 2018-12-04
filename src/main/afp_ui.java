@@ -136,6 +136,16 @@ public class afp_ui extends javax.swing.JFrame {
         clearButton1 = new javax.swing.JButton();
         emailAddressField = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
+        invalidStreetNumber = new javax.swing.JLabel();
+        invalidStreetName = new javax.swing.JLabel();
+        invalidCity = new javax.swing.JLabel();
+        invalidState = new javax.swing.JLabel();
+        invalidZipCode = new javax.swing.JLabel();
+        invalidCellPhone = new javax.swing.JLabel();
+        invalidHomePhone = new javax.swing.JLabel();
+        invalidEmailAddress = new javax.swing.JLabel();
+        invalidLastName = new javax.swing.JLabel();
+        invalidFirstName = new javax.swing.JLabel();
         searchPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -296,6 +306,26 @@ public class afp_ui extends javax.swing.JFrame {
 
         jLabel23.setText("Email Address:");
 
+        invalidStreetNumber.setText("invalid input");
+
+        invalidStreetName.setText("invalid input");
+
+        invalidCity.setText("invalid input");
+
+        invalidState.setText("invalid input");
+
+        invalidZipCode.setText("invalid input");
+
+        invalidCellPhone.setText("invalid input");
+
+        invalidHomePhone.setText("invalid input");
+
+        invalidEmailAddress.setText("invalid input");
+
+        invalidLastName.setText("invalid input");
+
+        invalidFirstName.setText("invalid input");
+
         javax.swing.GroupLayout registerPanelLayout = new javax.swing.GroupLayout(registerPanel);
         registerPanel.setLayout(registerPanelLayout);
         registerPanelLayout.setHorizontalGroup(
@@ -333,7 +363,19 @@ public class afp_ui extends javax.swing.JFrame {
                     .addComponent(fnameField)
                     .addComponent(cellPhoneField, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(emailAddressField))
-                .addContainerGap(258, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(invalidStreetNumber)
+                    .addComponent(invalidEmailAddress)
+                    .addComponent(invalidCellPhone)
+                    .addComponent(invalidHomePhone)
+                    .addComponent(invalidZipCode)
+                    .addComponent(invalidState)
+                    .addComponent(invalidCity)
+                    .addComponent(invalidStreetName)
+                    .addComponent(invalidFirstName)
+                    .addComponent(invalidLastName))
+                .addContainerGap(172, Short.MAX_VALUE))
         );
         registerPanelLayout.setVerticalGroup(
             registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -341,43 +383,53 @@ public class afp_ui extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(fnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(invalidFirstName))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(invalidLastName))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(streetNumberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(invalidStreetNumber))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(streetNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(invalidStreetName))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cityField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(jLabel5)
+                    .addComponent(invalidCity))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(stateField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel6)
+                    .addComponent(invalidState))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(zipCodeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(jLabel7)
+                    .addComponent(invalidZipCode))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(homePhoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8))
+                    .addComponent(jLabel8)
+                    .addComponent(invalidHomePhone))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cellPhoneField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9))
+                    .addComponent(jLabel9)
+                    .addComponent(invalidCellPhone))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(registerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(emailAddressField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel23))
+                    .addComponent(jLabel23)
+                    .addComponent(invalidEmailAddress))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(courtMandatedBox)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1136,6 +1188,7 @@ public class afp_ui extends javax.swing.JFrame {
         loadTotalHours();
         loadVolunteersTable();
         loadHoursTable();
+        clearInvalidLabels();
         
         
     }//GEN-LAST:event_formWindowOpened
@@ -1293,7 +1346,80 @@ public class afp_ui extends javax.swing.JFrame {
         if (courtMandatedBox.isSelected()) {
             courtMandated = 1;
         }
+        
+        Boolean valid = true;
+        
+        if (!firstName.matches("^[^'\\s][a-zA-Z']*$")) {
+            valid = false;
+            invalidFirstName.setVisible(true);
+        } else {
+            invalidFirstName.setVisible(false);
+        }
+        
+        if (!lastName.matches("^[^-'\\s][a-zA-Z']*$")) {
+            valid = false;
+            invalidLastName.setVisible(true);
+        } else {
+            invalidLastName.setVisible(false);
+        }
+        
+        if (!streetNumber.matches("^[^s][A-Z0-9]*$")) {
+            valid = false;
+            invalidStreetNumber.setVisible(true);
+        } else {
+            invalidStreetNumber.setVisible(false);
+        }
+        
+        if (!streetName.matches("^[^.'\\s][a-zA-Z0-9.' ]*$")) {
+            valid = false;
+            invalidStreetName.setVisible(true);
+        } else {
+            invalidStreetName.setVisible(false);
+        }
+        
+        if (!city.matches("^[^-'\\s][a-zA-Z ]*$")) {
+            valid = false;
+            invalidCity.setVisible(true);
+        } else {
+            invalidCity.setVisible(false);
+        }
+        
+        if (!state.matches("(A[KLRZ]|C[AOT]|D[CE]|FL|GA|HI|I[ADLN]|K[SY]|LA|M[ADEINOST]|N[CDEHJMVY]|O[HKR]|P[AR]|RI|S[CD]|T[NX]|UT|V[AIT]|W[AIVY])$")) {
+            valid = false;
+            invalidState.setVisible(true);
+        } else {
+            invalidState.setVisible(false);
+        }
+        
+        if (!zipCode.matches("^\\d{5}$|^\\d{5}-\\d{4}$")) {
+            valid = false;
+            invalidZipCode.setVisible(true);
+        } else {
+            invalidZipCode.setVisible(false);
+        }
+        
+        if (!homePhone.matches("^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}$")) {
+            valid = false;
+            invalidHomePhone.setVisible(true);
+        } else {
+            invalidHomePhone.setVisible(false);
+        }
+        
+        if (!cellPhone.matches("^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}$")) {
+            valid = false;
+            invalidCellPhone.setVisible(true);
+        } else {
+            invalidCellPhone.setVisible(false);
+        }
+        
+        if (!emailAddress.matches("^(([^<>()\\[\\]\\\\.,;:\\s@\"]+(\\.[^<>()\\[\\]\\\\.,;:\\s@\"]+)*)|(\".+\"))@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$")) {
+            valid = false;
+            invalidEmailAddress.setVisible(true);
+        } else {
+            invalidEmailAddress.setVisible(false);
+        }
 
+        if (valid) {
         //create volunteer data in database
         doUpdate(String.format(
                 "INSERT INTO `volunteers` ("
@@ -1342,6 +1468,10 @@ public class afp_ui extends javax.swing.JFrame {
         //reload volunteer table so new volunteer is visible
         loadVolunteersTable();
         clearRegistrationTextFields();
+        clearInvalidLabels();
+        } else {
+            System.out.println("something is invalid idiot");
+        }
     }//GEN-LAST:event_submitButtonActionPerformed
 
     private void searchTextField2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchTextField2KeyReleased
@@ -1630,6 +1760,20 @@ public class afp_ui extends javax.swing.JFrame {
         cellPhoneField.setText("");
         emailAddressField.setText("");
     }
+    
+    public void clearInvalidLabels() {
+        invalidFirstName.setVisible(false);
+        invalidLastName.setVisible(false);
+        invalidStreetNumber.setVisible(false);
+        invalidStreetName.setVisible(false);
+        invalidCity.setVisible(false);
+        invalidState.setVisible(false);
+        invalidZipCode.setVisible(false);
+        invalidHomePhone.setVisible(false);
+        invalidCellPhone.setVisible(false);
+        invalidEmailAddress.setVisible(false);
+    }
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1645,6 +1789,16 @@ public class afp_ui extends javax.swing.JFrame {
     private javax.swing.JTextField fnameField;
     private javax.swing.JTextField homePhoneField;
     private javax.swing.JTabbedPane hoursPanel;
+    private javax.swing.JLabel invalidCellPhone;
+    private javax.swing.JLabel invalidCity;
+    private javax.swing.JLabel invalidEmailAddress;
+    private javax.swing.JLabel invalidFirstName;
+    private javax.swing.JLabel invalidHomePhone;
+    private javax.swing.JLabel invalidLastName;
+    private javax.swing.JLabel invalidState;
+    private javax.swing.JLabel invalidStreetName;
+    private javax.swing.JLabel invalidStreetNumber;
+    private javax.swing.JLabel invalidZipCode;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton7;
