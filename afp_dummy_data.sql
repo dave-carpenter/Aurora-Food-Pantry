@@ -234,3 +234,20 @@ INSERT INTO `contact_info` (`id`, `street_number`, `street_name`, `city`, `state
 INSERT INTO `contact_info` (`id`, `street_number`, `street_name`, `city`, `state`, `zip_code`, `home_phone`, `cell_phone`, `email_address`) VALUES (98, '6097', 'Asia Mountain', 'Carolinatown', 'Tennessee', '16859', '+38(2)9887038447', '216-884-0811', 'klubowitz@example.com');
 INSERT INTO `contact_info` (`id`, `street_number`, `street_name`, `city`, `state`, `zip_code`, `home_phone`, `cell_phone`, `email_address`) VALUES (99, '6133', 'Stark Square', 'Ozellaside', 'NewMexico', '47150', '613-091-8789x0025', '1-520-900-0093x0280', 'monty.weimann@example.net');
 INSERT INTO `contact_info` (`id`, `street_number`, `street_name`, `city`, `state`, `zip_code`, `home_phone`, `cell_phone`, `email_address`) VALUES (100, '7895', 'Kendrick Corners', 'West Bryanashire', 'Oregon', '08296', '1-995-542-2001', '(657)261-5470x21289', 'ledner.katlynn@example.com');
+
+#
+# TABLE STRUCTURE FOR: hours
+#
+
+DROP TABLE IF EXISTS `hours`;
+
+CREATE TABLE `hours` (
+	`hours_id` int(5) NOT NULL AUTO_INCREMENT,
+   `volunteer_id` int(5) NOT NULL,
+   `hours_worked` int(5) NOT NULL,
+   `date` DATE NOT NULL,
+   PRIMARY KEY (`hours_id`),
+   CONSTRAINT `hours_ibfk_1` FOREIGN KEY (`volunteer_id`) REFERENCES `volunteers` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+#add your own dummy data
